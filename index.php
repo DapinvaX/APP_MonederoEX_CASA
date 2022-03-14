@@ -101,9 +101,11 @@ require_once __DIR__.'/DAO/MonederoDAO.php';
            <td><input class="w3-input w3-border" type="text" name="importe" value="'.$concepto["importe"].'"></td>
 
            
-           <td>  <input type="submit" class="w3-btn w3-green" value="Guardar"></td>
+           <td>  <input type="submit" class="w3-btn w3-green" value="Guardar">  </td>
 
-           <td>  <input type="button" class="w3-btn w3-red" value="Cancelar" onclick="history.back();"> </td>
+           <td>  <a href="index.php" type="button" class="w3-btn w3-red">Cancelar</a> </td>
+          <!-- <td>  <input type="button" class="w3-btn w3-red" value="Cancelar" onclick="history.back();"> </td> -->
+
 
            <td> </td>
 
@@ -149,9 +151,7 @@ require_once __DIR__.'/DAO/MonederoDAO.php';
 
 
 
- <table class="w3-table w3-bordered">
-
-  
+ <table class="w3-table w3-bordered"> 
 
    <tr>
 
