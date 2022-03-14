@@ -98,8 +98,8 @@ require_once __DIR__.'/DAO/MonederoDAO.php';
 
            <td><input class="w3-input w3-border" type="date" name="fecha" value="'.$fechaMysql.'" ></td>
 
-           <td><input class="w3-input w3-border" type="text" name="importe" value="'.$concepto["importe"].'"></td>
-
+           <td><input class="w3-input w3-border" type="text" name="importe" value="'.$concepto["importe"].'" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"></td>
+           
            
            <td>  <input type="submit" class="w3-btn w3-green" value="Guardar">  </td>
 
@@ -161,7 +161,7 @@ require_once __DIR__.'/DAO/MonederoDAO.php';
 
      <td> <input class="w3-input w3-border" type="date" name="fecha" placeholder="Fecha"></td>
 
-     <td> <input class="w3-input w3-border" type="text" name="importe" placeholder="Importe"></td>
+     <td> <input class="w3-input w3-border" type="text" name="importe" placeholder="Importe" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"></td>
 
      <td> <input type="submit" class="w3-btn w3-green" value="Registrar"></td>
 
