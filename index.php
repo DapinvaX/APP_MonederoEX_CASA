@@ -69,6 +69,8 @@ require_once __DIR__.'/DAO/MonederoDAO.php';
      //SI VIENEN EN EL POST LOS RECUPEPRO
      //SI NO VIENEN LOS INICIALIZO A "" o 0
     $conceptoBusqueda =  $_POST["buscar"];
+    $fechaBusqueda =  $_POST["buscar"];
+    $importeBusqueda =  $_POST["buscar"];
 
     //pasar a la función los campos de búsqueda
     $listaConceptos =  $monederoDAO->buscar($conceptoBusqueda,$fechaBusqueda,$importeBusqueda);
