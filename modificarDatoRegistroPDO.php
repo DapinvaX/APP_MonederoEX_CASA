@@ -11,47 +11,50 @@ echo 'Editar Registro';
 
 
 require ('./DAO/MonederoDAO.php');
+//require ('./DTO/RegistroDTO.php');
 
 
 
 // PASO 1: RECUPERAR DATOS DEL POST
 
-if(isset($_GET['id'])){
+if(isset($_POST['id'])){
 
-   $id = $_GET['id'];
+   $id = $_POST['id'];
 
 }
 
-if(isset($_GET['concepto'])){
+if(isset($_POST['concepto'])){
 
-    $concepto = $_GET['concepto'];
+    $concepto = $_POST['concepto'];
  
  }
 
- if(isset($_GET['importe'])){
+ if(isset($_POST['importe'])){
 
-    $importe = $_GET['importe'];
+    $importe = $_POST['importe'];
  
  }
 
- if(isset($_GET['fecha'])){
+ if(isset($_POST['fecha'])){
 
-    $fecha = $_GET['fecha'];
+    $fecha = $_POST['fecha'];
  
  }
 
  
 // PASO 3:CREAR DAO Y LLAMAR A LA FUNCIÓN insertar CON EL DTO DEL PASO 2
 
-$registroDAO = new MonederoDAO();
+$monderoDAO = new MonederoDAO();
+$registroDTO = new RegistroDTO();
+
+$registroDTO->setId($id);
+$registroDTO->setConcepto($concepto);
+$registroDTO->setFecha($fecha);
+$registroDTO->setImporte($importe);
 
 
+$resultado = $monderoDAO->modificarRegistro($registroDTO); 
 
-$resultado = $registroDAO->modificarRegistro($id); 
-
-
-
-echo $resultado;
 
 echo 'Registro modificado';
 

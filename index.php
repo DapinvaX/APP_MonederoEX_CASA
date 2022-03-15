@@ -58,11 +58,29 @@ require_once __DIR__.'/DAO/MonederoDAO.php';
 
    <?php
 
+  $monederoDAO =  new MonederoDAO();
 
+  if(isset($_POST["buscarConcepto"])){
 
-   $monederoDAO =  new MonederoDAO();
+    $conceptoBusqueda = "";
+    $importeBusqueda = 0 ;
+     //PREGUNTAR POR LOS CAMPOS DE BÚSQUEDA
+     //SI VIENEN EN EL POST LOS RECUPEPRO
+     //SI NO VIENEN LOS INICIALIZO A "" o 0
+    $conceptoBusqueda =  $_POST["buscar"];
 
-   $listaConceptos =  $monederoDAO->obtenerResgistros();
+    //pasar a la función los campos de búsqueda
+    $listaConceptos =  $monederoDAO->buscar($conceptoBusqueda,$fechaBusqueda,$importeBusqueda);
+   
+    
+  }else{
+    $listaConceptos =  $monederoDAO->obtenerResgistros();
+
+  }
+
+ 
+
+ 
 
 
 
@@ -91,15 +109,15 @@ require_once __DIR__.'/DAO/MonederoDAO.php';
            $html = '
 
            <form action="modificarDatoRegistroPDO.php" method="POST">
-
+           <input class="w3-input w3-border" type="hidden" name="id" value="'.$concepto["id"].'">
             <tr>
 
            <td><input class="w3-input w3-border" type="text" name="concepto" value="'.$concepto["concepto"].'"></td>
 
            <td><input class="w3-input w3-border" type="date" name="fecha" value="'.$fechaMysql.'" ></td>
 
-           <td><input class="w3-input w3-border" type="text" name="importe" value="'.$concepto["importe"].'"></td>
-
+           <td><input class="w3-input w3-border" type="text" name="importe" value="'.$concepto["importe"].'" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"></td>
+           
            
            <td>  <input type="submit" class="w3-btn w3-green" value="Guardar">  </td>
 
@@ -161,7 +179,7 @@ require_once __DIR__.'/DAO/MonederoDAO.php';
 
      <td> <input class="w3-input w3-border" type="date" name="fecha" placeholder="Fecha"></td>
 
-     <td> <input class="w3-input w3-border" type="text" name="importe" placeholder="Importe"></td>
+     <td> <input class="w3-input w3-border" type="text" name="importe" placeholder="Importe" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"></td>
 
      <td> <input type="submit" class="w3-btn w3-green" value="Registrar"></td>
 
@@ -181,16 +199,15 @@ require_once __DIR__.'/DAO/MonederoDAO.php';
 
    <tr>
 
-     <td><input class="w3-input w3-border" type="text" placeholder="Buscar"></td>
-
-    
-
-    
-
-     <td> <a href="#" class="w3-btn w3-blue">Buscar</a></td>
-
-    
-
+      <form action="index.php" method="POST">
+      <input class="w3-input w3-border" type="hidden" name="buscar" value="buscar">
+      <td><input class="w3-input w3-border" type="text" name="campoBusquedaConcepto" placeholder="Buscar por concepto"></td>
+      <td><input class="w3-input w3-border" type="text" name="campoBusquedaFecha" placeholder="Buscar por fecha"></td>
+      <td><input class="w3-input w3-border" type="text" name="campoBusquedaImporte" placeholder="Buscar por importe"></td>
+      
+      <td> <input type="submit" class="w3-btn w3-blue" value="Buscar"></td>
+     </form>
+  
    </tr>
 
  

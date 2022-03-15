@@ -50,7 +50,9 @@ class MonederoDAO{
 
       $sql = "SELECT id, concepto, fecha, importe FROM monedero WHERE id=".$id;
 
-      $conexion->query($sql);
+      $conceptos = $conexion->query($sql);
+
+      return $conceptos;
 
 
      } catch(PDOException $e) {
@@ -62,6 +64,48 @@ class MonederoDAO{
         $conexion = null; 
 
    }
+
+   public function buscar($campoBusquedaConcepto,$campoBusquedaFecha,$campoBusquedaImporte){
+
+    try {
+
+      require ('./CONEXION/conexionPDO.php');     
+
+      $sql = "SELECT id, concepto, fecha, importe FROM monedero WHERE 1 ";
+      
+      if($campoBusquedaConcepto!=''){
+
+        $sql.=" AND concepto='".$campoBusquedaConcepto."'";
+      }
+
+      if($campoBusquedaFecha!=''){
+
+        $sql.=" AND fecha=".$campoBusquedaFecha;
+      }
+
+      if($campoBusquedaImporte!=''){
+
+        $sql.=" AND importe=".$campoBusquedaImporte;
+      }
+     
+      $conceptos = $conexion->query($sql);
+
+      return $conceptos;
+
+
+     } catch(PDOException $e) {
+
+       echo "Error: " . $e->getMessage();
+
+       }
+
+        $conexion = null; 
+
+
+
+   }
+
+  
 
 
 
@@ -102,9 +146,11 @@ class MonederoDAO{
 
         require ('./CONEXION/conexionPDO.php');     
  
-        $sql = "UPDATE FROM monedero SET concepto=".$registroDTO->getConcepto().",importe=".$registroDTO->getImporte().",fecha=".$registroDTO->getFecha()." WHERE id=".$id  ;
+        $sql = "UPDATE monedero SET concepto='".$registroDTO->getConcepto()."',importe=".$registroDTO->getImporte().",fecha='".$registroDTO->getFecha()."' WHERE id=".$registroDTO->getId()  ;
 
         $conexion->query($sql);
+
+        return $sql;
  
  
        } catch(PDOException $e) {
