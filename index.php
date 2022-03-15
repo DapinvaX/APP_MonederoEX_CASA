@@ -81,11 +81,6 @@ require_once __DIR__.'/DAO/MonederoDAO.php';
 
   }
 
- 
-
- 
-
-
 
    $id=0;
 
