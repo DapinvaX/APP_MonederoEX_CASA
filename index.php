@@ -60,9 +60,10 @@ require_once __DIR__.'/DAO/MonederoDAO.php';
 
   $monederoDAO =  new MonederoDAO();
 
-  if(isset($_POST["buscarConcepto"])){
+  if(isset($_POST["buscar"])){
 
     $conceptoBusqueda = "";
+    $fechaBusqueda = "";
     $importeBusqueda = 0 ;
      //PREGUNTAR POR LOS CAMPOS DE BÚSQUEDA
      //SI VIENEN EN EL POST LOS RECUPEPRO
@@ -200,13 +201,17 @@ require_once __DIR__.'/DAO/MonederoDAO.php';
    <tr>
 
       <form action="index.php" method="POST">
-      <input class="w3-input w3-border" type="hidden" name="buscar" value="buscar">
-      <td><input class="w3-input w3-border" type="text" name="campoBusquedaConcepto" placeholder="Buscar por concepto"></td>
-      <td><input class="w3-input w3-border" type="text" name="campoBusquedaFecha" placeholder="Buscar por fecha"></td>
-      <td><input class="w3-input w3-border" type="text" name="campoBusquedaImporte" placeholder="Buscar por importe"></td>
-      
-      <td> <input type="submit" class="w3-btn w3-blue" value="Buscar"></td>
-     </form>
+
+
+        <input class="w3-input w3-border" type="hidden" name="buscar" value="buscar">
+        <td><input class="w3-input w3-border" type="text" name="campoBusquedaConcepto" placeholder="Buscar por concepto"></td>
+        <td><input class="w3-input w3-border" type="text" name="campoBusquedaFecha" placeholder="Buscar por fecha"></td>
+        <td><input class="w3-input w3-border" type="text" name="campoBusquedaImporte" placeholder="Buscar por importe"></td>
+        
+        <td> <input type="submit" class="w3-btn w3-blue" value="Buscar"></td>
+     
+
+      </form>
   
    </tr>
 
